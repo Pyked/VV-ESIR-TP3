@@ -15,3 +15,8 @@ Include the improved test code in this file.
 
 ## Answer
 
+Les 'odeurs de test' discutées en classe implémentées par ces règles sont:
+
+
+Nous utiliserons le projet Apache Common Math
+
