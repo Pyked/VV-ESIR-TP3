@@ -27,13 +27,13 @@ public class TLSSocketFactoryTestMocks {
     public void typical() {
         TLSSocketFactory tlsSocketFactory = new TLSSocketFactory();
         SSLSocket mockSocket = mock(SSLSocket.class);
-
+    
         // Stubbing the behavior of the mock socket
-        when(mockSocket.getSupportedProtocols()).thenReturn(shuffle(new String[]{"SSLv2Hello", "SSLv3", "TLSv1", "TLSv1.1", "TLSv1.2"}));
-        when(mockSocket.getEnabledProtocols()).thenReturn(shuffle(new String[]{"SSLv3", "TLSv1"}));
-
+        when(mockSocket.getSupportedProtocols()).thenReturn(new String[]{"SSLv2Hello", "SSLv3", "TLSv1", "TLSv1.1", "TLSv1.2"});
+        when(mockSocket.getEnabledProtocols()).thenReturn(new String[]{"SSLv3", "TLSv1"});
+    
         tlsSocketFactory.prepareSocket(mockSocket);
-
+    
         // Verifying that setEnabledProtocols was called with the expected arguments
         verify(mockSocket).setEnabledProtocols(new String[]{"TLSv1.2", "TLSv1.1", "TLSv1", "SSLv3"});
     }

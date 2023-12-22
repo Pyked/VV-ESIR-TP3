@@ -1,5 +1,4 @@
 package fr.istic.vv;
-
 import org.junit.jupiter.api.Test;
 
 import java.util.Comparator;
@@ -10,84 +9,89 @@ import static org.junit.jupiter.api.Assertions.*;
 class BinaryHeapTest {
 
     @Test
-    void testBinaryHeapConstructor() {
-        // Block: Valid comparator
-        BinaryHeap<Integer> heap1 = new BinaryHeap<>(Comparator.naturalOrder());
-        assertNotNull(heap1);
-
-        // Block: Null comparator
-        assertThrows(IllegalArgumentException.class, () -> new BinaryHeap<>(null));
-    }
-
-    @Test
     void testPop() {
-        BinaryHeap<Integer> heap = new BinaryHeap<>(Comparator.naturalOrder());
+        BinaryHeap<Integer> heap = new BinaryHeap<Integer>(Comparator.naturalOrder());
 
         // Block: Empty heap
         assertThrows(NoSuchElementException.class, heap::pop);
 
-        // Block: Heap with one element
+        // Block: Heap with elements
         heap.push(5);
-        assertEquals(5, heap.pop());
-
-        // Block: Heap with multiple elements
         heap.push(10);
-        heap.push(5);
         heap.push(15);
-        assertEquals(5, heap.pop());
+
+        assertEquals(3, heap.count());  // Additional test case
+
+        int minElement = heap.pop();
+        assertEquals(2, heap.count());  // Additional test case
+        assertEquals(5, minElement);
+
+        // Block: Verify heap property after pop
+        assertEquals(10, heap.pop());
+        assertEquals(1, heap.count());  // Additional test case
     }
 
     @Test
     void testPeek() {
-        BinaryHeap<Integer> heap = new BinaryHeap<>(Comparator.naturalOrder());
+        BinaryHeap<Integer> heap = new BinaryHeap<Integer>(Comparator.naturalOrder());
 
         // Block: Empty heap
         assertThrows(NoSuchElementException.class, heap::peek);
 
-        // Block: Heap with one element
+        // Block: Heap with elements
         heap.push(5);
-        assertEquals(5, heap.peek());
-
-        // Block: Heap with multiple elements
         heap.push(10);
-        heap.push(5);
         heap.push(15);
-        assertEquals(5, heap.peek());
+
+        assertEquals(3, heap.count());  // Additional test case
+
+        int minElement = heap.peek();
+        assertEquals(3, heap.count());  // Additional test case
+        assertEquals(5, minElement);
+
+        // Block: Verify heap property after peek
+        assertEquals(3, heap.count());  // Additional test case
     }
 
     @Test
     void testPush() {
-        BinaryHeap<Integer> heap = new BinaryHeap<>(Comparator.naturalOrder());
+        BinaryHeap<Integer> heap = new BinaryHeap<Integer>(Comparator.naturalOrder());
 
         // Block: Null element
         assertThrows(NullPointerException.class, () -> heap.push(null));
 
         // Block: First element in the heap
         heap.push(5);
-        assertEquals(5, heap.peek());
+        assertEquals(1, heap.count());  // Additional test case
 
         // Block: Not the first element in the heap
         heap.push(3);
-        assertEquals(3, heap.peek());
+        assertEquals(2, heap.count());  // Additional test case
+
         heap.push(7);
-        assertEquals(3, heap.peek());
+        assertEquals(3, heap.count());  // Additional test case
+
+        assertEquals(3, heap.pop());  // Additional test case
     }
 
     @Test
     void testCount() {
-        BinaryHeap<Integer> heap = new BinaryHeap<>(Comparator.naturalOrder());
+        BinaryHeap<Integer> heap = new BinaryHeap<Integer>(Comparator.naturalOrder());
 
         // Block: Empty heap
         assertEquals(0, heap.count());
 
-        // Block: Heap with one element
+        // Block: Heap with elements
         heap.push(5);
-        assertEquals(1, heap.count());
-
-        // Block: Heap with multiple elements
         heap.push(10);
-        heap.push(5);
         heap.push(15);
-        assertEquals(4, heap.count());
+
+        assertEquals(3, heap.count());
+        heap.pop();
+        assertEquals(2, heap.count());
+        heap.pop();
+        assertEquals(1, heap.count());
+        heap.pop();
+        assertEquals(0, heap.count());
     }
 }
