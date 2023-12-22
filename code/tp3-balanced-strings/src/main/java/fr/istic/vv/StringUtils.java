@@ -1,37 +1,32 @@
 package fr.istic.vv;
 
+import java.util.Stack;
+
 public class StringUtils {
-
-    private StringUtils() {}
-
     public static boolean isBalanced(String str) {
-        int balance_indicator = 0;  // Initialize balance_indicator to 0
+        Stack<Character> stack = new Stack<>();
 
-        for (int i = 0; i < str.length(); i++) {
-            char currentChar = str.charAt(i);
-    
-            if (currentChar == '{') {
-                balance_indicator += 1;
-            } else if (currentChar == '[') {
-                balance_indicator += 2;
-            } else if (currentChar == '(') {
-                balance_indicator += 3;
-            } else if (currentChar == '}') {
-                balance_indicator -= 1;
-            } else if (currentChar == ']') {
-                balance_indicator -= 2;
-            } else if (currentChar == ')') {
-                balance_indicator -= 3;
-            }
-    
-            // Check if the balance_indicator goes negative at any point
-            if (balance_indicator < 0) {
-                return false;
+        for (char ch : str.toCharArray()) {
+            if (ch == '{' || ch == '[' || ch == '(') {
+                stack.push(ch);
+            } else if (ch == '}' || ch == ']' || ch == ')') {
+                if (stack.isEmpty()) {
+                    return false; // Unmatched closing symbol
+                }
+
+                char openSymbol = stack.pop();
+                if (!isMatching(openSymbol, ch)) {
+                    return false; // Mismatched opening and closing symbols
+                }
             }
         }
-    
-        // Check if the balance_indicator is zero after processing the entire string
-        return balance_indicator == 0;
+
+        return stack.isEmpty(); // Check if all opening symbols have a matching closing symbol
     }
 
+    private static boolean isMatching(char openSymbol, char closeSymbol) {
+        return (openSymbol == '{' && closeSymbol == '}') ||
+               (openSymbol == '[' && closeSymbol == ']') ||
+               (openSymbol == '(' && closeSymbol == ')');
+    }
 }

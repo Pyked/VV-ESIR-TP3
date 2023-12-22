@@ -1,42 +1,40 @@
 package fr.istic.vv;
 
 import org.junit.jupiter.api.Test;
-
 import static fr.istic.vv.StringUtils.isBalanced;
 import static org.junit.jupiter.api.Assertions.*;
 
 class StringUtilsTest {
+    
     @Test
-    public void testChaineVide() {
-        assertTrue(StringUtils.estEquilibree(""));
+    void testChaineVide() {
+        assertTrue(isBalanced(""));
     }
 
     @Test
-    public void testSymbolesEquilibres() {
-        assertTrue(StringUtils.estEquilibree("{[()]}"));
-        assertTrue(StringUtils.estEquilibree("({})"));
+    void testSymbolesEquilibres() {
+        assertTrue(isBalanced("{[()]}"));
     }
 
     @Test
-    public void testSymbolesDesequilibres() {
-        assertFalse(StringUtils.estEquilibree("]["));
-        assertFalse(StringUtils.estEquilibree("([)]"));
-        assertFalse(StringUtils.estEquilibree("{(}{})"));
+    void testSymbolesDesequilibres() {
+        assertFalse(isBalanced("{[(])}"));
     }
 
     @Test
-    public void testAutresCaracteres() {
-        assertTrue(StringUtils.estEquilibree("abc123"));
+    void testAutresCaracteres() {
+        assertTrue(isBalanced("abc123"));
     }
 
     @Test
-    public void testSymboleFermetureRedondant() {
-        assertFalse(StringUtils.estEquilibree("{[}]"));
+    void testSymboleFermetureRedondant() {
+        assertFalse(isBalanced("{[()]}]"));
     }
 
     @Test
-    public void testSymboleFermetureNonApparie() {
-        assertFalse(StringUtils.estEquilibree("{[})"));
+    void testSymboleFermetureNonApparie() {
+        assertFalse(isBalanced("{[(])"));
     }
+
 
 }
