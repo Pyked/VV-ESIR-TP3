@@ -25,7 +25,28 @@ Write below the actions you took on each step and the results you obtained.
 Use the project in [tp3-balanced-strings](../code/tp3-balanced-strings) to complete this exercise.
 
 ## Answer
+    Partitionnement de l'espace d'entrée :
 
+        Caractères valides : Les tests utilisent uniquement les caractères suivants : '{', '}', '[', ']', '(', ')'.
+
+        Présence d'autres caractères : Les tests couvrent des cas où d'autres caractères sont présents dans la chaîne.
+
+        Position des symboles : Certains tests, comme "testSymboleFermetureRedondant" et "testSymboleFermetureNonApparie", vérifient la position des symboles.
+
+    Évaluation de la couverture de déclaration :
+
+        Cas 1 : testChaineVide : La chaîne est vide. Le test couvre une chaîne vide, devrait renvoyer true.
+
+        Cas 2 et 3 : testSymbolesEquilibres et testSymbolesDesequilibres : Ces tests couvrent des chaînes avec des symboles équilibrés et déséquilibrés, respectivement. Ils devraient renvoyer les résultats attendus.
+
+        Cas 4 : testAutresCaracteres : Vérifie que d'autres caractères, tels que des lettres et des chiffres, n'affectent pas l'équilibre. Devrait renvoyer true.
+
+        Cas 5 et 6 : testSymboleFermetureRedondant et testSymboleFermetureNonApparie : Ces tests vérifient les cas où les symboles de fermeture sont redondants ou non appariés. Devraient renvoyer false.
+
+    Évaluation de la couverture des prédicats et Base Choice Coverage :
+        Aucune évaluation n'est nécessaire ici car le code ne semble pas contenir de prédicats complexes avec plus de deux opérateurs booléens.
+
+        
 Implémentation:
 
 ```java
