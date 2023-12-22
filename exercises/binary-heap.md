@@ -40,3 +40,58 @@ Use the following steps to design the test suite:
 Use the project in [tp3-heap](../code/tp3-heap) to complete this exercise.
 
 ## Answer
+### 1. Partitionnement de l'espace d'entrée pour chaque méthode :
+
+#### `BinaryHeap` Constructor (`BinaryHeap(Comparator<T> comparator)`):
+
+- **Caractéristiques :**
+  - **Valid Comparator :** Un comparateur valide.
+  - **Null Comparator :** Un comparateur nul.
+
+#### `pop` Method (`T pop()`):
+
+- **Caractéristiques :**
+  - **Empty Heap :** Le tas est vide.
+  - **Heap with One Element :** Le tas a un élément.
+  - **Heap with Multiple Elements :** Le tas a plusieurs éléments.
+
+#### `peek` Method (`T peek()`):
+
+- **Caractéristiques :**
+  - **Empty Heap :** Le tas est vide.
+  - **Heap with One Element :** Le tas a un élément.
+  - **Heap with Multiple Elements :** Le tas a plusieurs éléments.
+
+#### `push` Method (`void push(T element)`):
+
+- **Caractéristiques :**
+  - **Null Element :** Ajout d'un élément nul.
+  - **First Element in the Heap :** Premier élément dans le tas.
+  - **Not the First Element in the Heap :** Ajout d'un élément qui n'est pas le premier.
+
+#### `count` Method (`int count()`):
+
+- **Caractéristiques :**
+  - **Empty Heap :** Le tas est vide.
+  - **Heap with One Element :** Le tas a un élément.
+  - **Heap with Multiple Elements :** Le tas a plusieurs éléments.
+
+#### **Caractéristiques Communes :**
+  - **Valid Input/State :** Des états/tas valides sont nécessaires pour chaque méthode.
+
+### 2. Évaluation de la couverture de déclaration :
+
+- **`testBinaryHeapConstructor` :** Les cas de test couvrent les blocs identifiés, notamment la création d'un tas avec un comparateur valide et la gestion d'un comparateur nul.
+
+- **`testPop` :** Les cas de test couvrent les blocs identifiés, y compris le retrait d'un élément d'un tas vide, le retrait d'un seul élément et le retrait d'un élément parmi plusieurs.
+
+- **`testPeek` :** Les cas de test couvrent les blocs identifiés, incluant la vérification de l'élément minimum sans le retirer pour un tas vide, un tas avec un élément et un tas avec plusieurs éléments.
+
+- **`testPush` :** Les cas de test couvrent les blocs identifiés, y compris l'ajout d'un élément nul, l'ajout du premier élément et l'ajout d'un élément qui n'est pas le premier.
+
+- **`testCount` :** Les cas de test couvrent les blocs identifiés, tels que le comptage dans un tas vide, un tas avec un élément et un tas avec plusieurs éléments.
+
+### 3. Évaluation de la couverture des prédicats et Base Choice Coverage :
+
+- **Il n'y a pas de prédicats complexes nécessitant Base Choice Coverage.**
+
