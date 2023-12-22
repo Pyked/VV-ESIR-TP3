@@ -25,38 +25,25 @@ Write below the actions you took on each step and the results you obtained.
 Use the project in [tp3-balanced-strings](../code/tp3-balanced-strings) to complete this exercise.
 
 ## Answer
+1. **Partitionnement de l'espace d'entrée :**
 
-Implémentation:
+    - **Caractères valides :** Les tests utilisent uniquement les caractères suivants : '{', '}', '[', ']', '(', ')'.
+    
+    - **Présence d'autres caractères :** Les tests couvrent des cas où d'autres caractères sont présents dans la chaîne.
 
-```java
-public static boolean isBalanced(String str) {
-    int balance_indicator = 0;  // Initialize balance_indicator to 0
+    - **Position des symboles :** Certains tests, comme "testSymboleFermetureRedondant" et "testSymboleFermetureNonApparie", vérifient la position des symboles.
 
-    for (int i = 0; i < str.length(); i++) {
-        char currentChar = str.charAt(i);
+2. **Évaluation de la couverture de déclaration :**
 
-        if (currentChar == '{') {
-            balance_indicator += 1;
-        } else if (currentChar == '[') {
-            balance_indicator += 2;
-        } else if (currentChar == '(') {
-            balance_indicator += 3;
-        } else if (currentChar == '}') {
-            balance_indicator -= 1;
-        } else if (currentChar == ']') {
-            balance_indicator -= 2;
-        } else if (currentChar == ')') {
-            balance_indicator -= 3;
-        }
+    - **Cas 1 : testChaineVide :** La chaîne est vide. Le test couvre une chaîne vide, devrait renvoyer `true`.
+    
+    - **Cas 2 et 3 : testSymbolesEquilibres et testSymbolesDesequilibres :** Ces tests couvrent des chaînes avec des symboles équilibrés et déséquilibrés, respectivement. Ils devraient renvoyer les résultats attendus.
 
-        // Check if the balance_indicator goes negative at any point
-        if (balance_indicator < 0) {
-            return false;
-        }
-    }
+    - **Cas 4 : testAutresCaracteres :** Vérifie que d'autres caractères, tels que des lettres et des chiffres, n'affectent pas l'équilibre. Devrait renvoyer `true`.
+    
+    - **Cas 5 et 6 : testSymboleFermetureRedondant et testSymboleFermetureNonApparie :** Ces tests vérifient les cas où les symboles de fermeture sont redondants ou non appariés. Devraient renvoyer `false`.
 
-    // Check if the balance_indicator is zero after processing the entire string
-    return balance_indicator == 0;
-}
-```
+3. **Évaluation de la couverture des prédicats et Base Choice Coverage :**
+
+    - Aucune évaluation n'est nécessaire ici car le code ne semble pas contenir de prédicats complexes avec plus de deux opérateurs booléens.
 
